@@ -4,7 +4,7 @@ project(arm2r)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED roscpp std_msgs tf)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -69,16 +69,16 @@ catkin_package(
 # )
 
 ## Declare a cpp executable
-# add_executable(object_node src/object_node.cpp)
+add_executable(arm2r_tf_listener src/arm2r_tf_listener.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(object_node object_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(object_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(arm2r_tf_listener
+   ${catkin_LIBRARIES}
+ )
 
 #############
 ## Install ##

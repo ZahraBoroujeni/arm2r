@@ -1,4 +1,4 @@
 arm2r
 =====
-Useing xacro urdf, creat a robot (2 links, 2 joints)  model!
+Using xacro urdf, creat a robot (2 links, 2 joints)  model!
 # arm2r
