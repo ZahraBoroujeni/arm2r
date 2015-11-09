@@ -6,6 +6,6 @@
 	<rosparam param="source_list">[/calibrated/joint_states]</rosparam>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
-	<node pkg="arm2r" type="arm2r_tf_listener" name="listener" />
+	<node pkg="arm2r" type="arm2r_tf_listener" name="listener" output="screen" />
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm2r)/urdf.rviz" />
 </launch>

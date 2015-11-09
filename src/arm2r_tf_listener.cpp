@@ -5,6 +5,7 @@
 //generic C/C++ include
 #include <string>
 #include <sstream>
+#include <ros/console.h>
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "arm2r_tf_listener");
@@ -26,8 +27,6 @@ int main(int argc, char** argv){
   ros::Publisher pub_datainfo_joints;
   pub_datainfo_joints=node.advertise<sensor_msgs::JointState>(node.resolveName("/calibrated/joint_states"), 10);
 
-
-
   tf::TransformListener listener;
 
   ros::Rate rate(10.0);
@@ -37,7 +36,7 @@ int main(int argc, char** argv){
     try {
     //listener.waitForTransform("/second_link", "/base_link", ros::Time(0), ros::Duration(10.0) );
     listener.lookupTransform("/second_link", "/base_link", ros::Time(0), transform);
-    ROS_ERROR("Transform = %f,%f", transform.getOrigin().x(),transform.getOrigin().y());
+    ROS_INFO("Translation = %f,%f,%f", transform.getOrigin().x(),transform.getOrigin().y(),transform.getOrigin().z());
 	} catch (tf::TransformException ex) {
     ROS_ERROR("%s",ex.what());
 	}
