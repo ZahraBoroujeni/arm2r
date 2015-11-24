@@ -3,9 +3,17 @@
 	<arg name="gui" default="False" />
 	<param name="use_gui" value="$(arg gui)"/>
 	<param name="robot_description" command="$(find xacro)/xacro.py $(find arm2r)/urdf/arm2r.urdf.xacro" />
-	<rosparam param="source_list">[/calibrated/joint_states]</rosparam>
+	<!--rosparam param="source_list">[/calibrated/joint_states]</rosparam-->
+	<rosparam param="publish_default_positions">[False]</rosparam>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
 	<node pkg="arm2r" type="arm2r_tf_listener" name="listener" output="screen" />
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm2r)/urdf.rviz" />
+	
+  <!-- Load all available controllers -->
+  <rosparam file="$(find arm2r)/config/controllers.yaml" command="load"/>
+  
+    <!-- Load controller manager -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/arm2r" args="joint_state_controller position_trajectory_controller"/>
 </launch>

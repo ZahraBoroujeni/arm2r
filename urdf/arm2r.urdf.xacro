@@ -73,4 +73,25 @@
     <axis xyz="1 0 0" />
     <limit lower="-${pi}" upper="${pi}" effort="10" velocity="1.0"/>
   </joint>
+  <transmission name="${name}_tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <robotNamespace>${name}</robotNamespace>
+    <joint name="joint_base_first">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${name}_motor1">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="${name}_tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <robotNamespace>${name}</robotNamespace>
+    <joint name="joint_first_second">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${name}_motor2">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 </robot>
