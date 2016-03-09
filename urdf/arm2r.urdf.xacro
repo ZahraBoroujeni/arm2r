@@ -5,6 +5,9 @@
   <xacro:property name="L2" value=".6" />
   <xacro:property name="pi" value="3.1415" />
 
+  <xacro:property name="name" value="arm2r" />
+  
+
   <xacro:macro name="default_inertial" params="mass">
     <inertial>
         <origin xyz="0 0 0" rpy="0 0 0" />
