@@ -4,7 +4,7 @@ project(arm2r)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED roscpp std_msgs tf)
+find_package(catkin REQUIRED COMPONENTS roscpp std_msgs tf)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -50,14 +50,14 @@ find_package(catkin REQUIRED roscpp std_msgs tf)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES object
-#  CATKIN_DEPENDS other_catkin_pkg
+#  LIBRARIES fub_grid
+   CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
 )
-
 ###########
 ## Build ##
 ###########
+include_directories(${catkin_INCLUDE_DIRS})
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
